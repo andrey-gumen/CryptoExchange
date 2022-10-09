@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        APIManager.shared.getExchanges { models in
+        APIManager.shared.getAssets { models in
             print(models)
         }
     }
