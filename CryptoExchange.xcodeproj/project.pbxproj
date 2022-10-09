@@ -14,6 +14,8 @@
 		A1EF7CAA28F34D66007B0FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CA928F34D66007B0FEC /* Assets.xcassets */; };
 		A1EF7CAD28F34D66007B0FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */; };
 		A1EF7CB628F36A74007B0FEC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1EF7CB528F36A74007B0FEC /* Alamofire */; };
+		A1EF7CB828F36AEB007B0FEC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CB728F36AEB007B0FEC /* APIManager.swift */; };
+		A1EF7CBA28F36B3E007B0FEC /* CryptoCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		A1EF7CA928F34D66007B0FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1EF7CAC28F34D66007B0FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1EF7CAE28F34D66007B0FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1EF7CB728F36AEB007B0FEC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,8 @@
 				A1EF7CA928F34D66007B0FEC /* Assets.xcassets */,
 				A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */,
 				A1EF7CAE28F34D66007B0FEC /* Info.plist */,
+				A1EF7CB728F36AEB007B0FEC /* APIManager.swift */,
+				A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */,
 			);
 			path = CryptoExchange;
 			sourceTree = "<group>";
@@ -146,7 +152,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EF7CB828F36AEB007B0FEC /* APIManager.swift in Sources */,
 				A1EF7CA528F34D66007B0FEC /* ViewController.swift in Sources */,
+				A1EF7CBA28F36B3E007B0FEC /* CryptoCurrencyModel.swift in Sources */,
 				A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */,
 				A1EF7CA328F34D66007B0FEC /* SceneDelegate.swift in Sources */,
 			);
