@@ -52,6 +52,13 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		A13B165528F42554009CB6A4 /* CurrencyViewTable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CurrencyViewTable;
+			sourceTree = "<group>";
+		};
 		A1EF7C9428F34D66007B0FEC = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +78,7 @@
 		A1EF7C9F28F34D66007B0FEC /* CryptoExchange */ = {
 			isa = PBXGroup;
 			children = (
+				A13B165528F42554009CB6A4 /* CurrencyViewTable */,
 				A13B165428F424EA009CB6A4 /* Data */,
 				A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */,
 				A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */,

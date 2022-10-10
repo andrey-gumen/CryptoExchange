@@ -1,17 +1,14 @@
-//
-//  ViewController.swift
-//  CryptoExchange
-//
-//  Created by Andrey Gumen on 09.10.2022.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupLayout()
+        setupAppearence()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -22,5 +19,26 @@ class ViewController: UIViewController {
         }
     }
 
+}
+
+
+private extension ViewController {
+    
+    // MARK: setup layout
+    func setupLayout() {
+        view.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
+
+    // MARK: setup appearence
+    func setupAppearence() {
+        tableView.backgroundColor = .darkGray
+    }
+    
 }
 
