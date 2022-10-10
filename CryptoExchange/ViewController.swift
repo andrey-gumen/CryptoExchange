@@ -84,18 +84,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             withIdentifier: CurrencyTableViewCell.cellIdentifier,
             for: indexPath
         ) as! CurrencyTableViewCell
-
-        guard let data = currencies[safe: indexPath.row] else {
-            cell.updateData(
-                name: "Invalid data",
-                price: nil
-            )
-            return cell
-        }
-
+        
+        let data = currencies[safe: indexPath.row]
         cell.updateData(
-            name: data.name,
-            price: data.priceInUsd
+            name: data?.name ?? "Invalid data",
+            price: data?.priceInUsd
         )
         return cell
     }
