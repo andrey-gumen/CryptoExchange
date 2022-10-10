@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     private func requestAllCurrencies() {
         APIManager.shared.getAssets { [weak self] models in
-            print(models)
+            //print(models)
             self?.currencies = models
             self?.tableView.reloadData()
         }
