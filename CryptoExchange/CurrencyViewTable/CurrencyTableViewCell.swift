@@ -20,10 +20,10 @@ final class CurrencyTableViewCell: UITableViewCell {
     
     // MARK: update data
     
-    func updateData(name: String, price: Double) {
+    func updateData(name: String, price: Double?) {
         nameLabel.text = name
         
-        let formattedPrice = String(format: "$%.2f", price)
+        let formattedPrice = price != nil ? String(format: "$%.2f", price!) : "-"
         priceLabel.text = formattedPrice
     }
     

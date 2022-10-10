@@ -2,6 +2,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private var currencies: [CryptoCurrencyModel] = []
     private let tableView = UITableView()
 
     override func viewDidLoad() {
@@ -15,8 +16,14 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        APIManager.shared.getAssets { models in
+        requestAllCurrencies()
+    }
+    
+    private func requestAllCurrencies() {
+        APIManager.shared.getAssets { [weak self] models in
             print(models)
+            self?.currencies = models
+            self?.tableView.reloadData()
         }
     }
 
@@ -47,7 +54,10 @@ private extension ViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        tableView.register(CurrencyTableViewCell.nib, forCellReuseIdentifier: CurrencyTableViewCell.cellIdentifier)
+        tableView.register(
+            CurrencyTableViewCell.nib,
+            forCellReuseIdentifier: CurrencyTableViewCell.cellIdentifier
+        )
     }
     
 }
@@ -57,13 +67,41 @@ private extension ViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        6
+        currencies.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: CurrencyTableViewCell.cellIdentifier,
+            for: indexPath
+        ) as! CurrencyTableViewCell
+        
+        guard let data = currencies[safe: indexPath.row] else {
+            cell.updateData(
+                name: "Invalid data",
+                price: nil
+            )
+            return cell
+        }
+        
+        cell.updateData(
+            name: data.name,
+            price: data.priceInUsd
+        )
+        return cell
     }
+    
+}
+
+// MAEK: array sugar
+
+extension Collection {
+    
+  subscript(safe index: Index) -> Iterator.Element? {
+    guard indices.contains(index) else { return nil }
+    return self[index]
+  }
     
 }
 
