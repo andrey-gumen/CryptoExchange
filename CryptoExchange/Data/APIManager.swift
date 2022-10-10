@@ -7,7 +7,7 @@ final class APIManager {
     static let shared = APIManager()
     private init () {}
     
-    // MARK: server constantce
+    // MARK: server constants
     
     private enum Constants : String {
         case BaseUrl = "https://rest.coinapi.io/v1"

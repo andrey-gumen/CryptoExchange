@@ -1,15 +1,15 @@
 import UIKit
 
-class ViewController: UIViewController {
-    
+final class ViewController: UIViewController {
+
     private var currencies: [CryptoCurrencyModel] = []
-    
+
     private let tableViewTitleLabel = UILabel()
     private let tableView = UITableView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupLayout()
         setupAppearence()
         setupBehaviour()
@@ -17,34 +17,32 @@ class ViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         requestAllCurrencies()
     }
-    
+
     private func requestAllCurrencies() {
         APIManager.shared.getAssets { [weak self] models in
-            //print(models)
+            // print(models)
             self?.currencies = models
             self?.tableView.reloadData()
         }
     }
-
 }
 
-
 private extension ViewController {
-    
+
     // MARK: setup layout
     func setupLayout() {
         view.addSubview(tableViewTitleLabel)
         view.addSubview(tableView)
-        
+
         tableViewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         tableViewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
         tableViewTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
         tableViewTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 12).isActive = true
         tableViewTitleLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: tableViewTitleLabel.bottomAnchor, constant: 12).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -56,39 +54,37 @@ private extension ViewController {
     func setupAppearence() {
         tableViewTitleLabel.text = "Exchange Rates"
         tableViewTitleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-        
+
         tableView.backgroundColor = UIColor(named: "currencyTableViewBackgrounds")
         tableView.rowHeight = 48
     }
-    
+
     // MARK: setup behaviour
     func setupBehaviour() {
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         tableView.register(
             CurrencyTableViewCell.nib,
             forCellReuseIdentifier: CurrencyTableViewCell.cellIdentifier
         )
     }
-    
 }
 
 // MARK: implementation UITableViewDelegate / UITableViewDataSource
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         currencies.count
     }
-    
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
             withIdentifier: CurrencyTableViewCell.cellIdentifier,
             for: indexPath
         ) as! CurrencyTableViewCell
-        
+
         guard let data = currencies[safe: indexPath.row] else {
             cell.updateData(
                 name: "Invalid data",
@@ -96,24 +92,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             )
             return cell
         }
-        
+
         cell.updateData(
             name: data.name,
             price: data.priceInUsd
         )
         return cell
     }
-    
 }
 
-// MAEK: array sugar
+// MARK: array sugar
 
 extension Collection {
-    
-  subscript(safe index: Index) -> Iterator.Element? {
-    guard indices.contains(index) else { return nil }
-    return self[index]
-  }
-    
-}
 
+    subscript(safe index: Index) -> Iterator.Element? {
+        guard indices.contains(index) else { return nil }
+        return self[index]
+    }
+}
