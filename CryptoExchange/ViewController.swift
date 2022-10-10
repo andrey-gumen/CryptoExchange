@@ -57,7 +57,7 @@ private extension ViewController {
         tableViewTitleLabel.text = "Exchange Rates"
         tableViewTitleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
         
-        tableView.backgroundColor = .darkGray
+        tableView.backgroundColor = UIColor(named: "currencyTableViewBackgrounds")
         tableView.rowHeight = 48
     }
     

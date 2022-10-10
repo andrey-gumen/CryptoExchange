@@ -12,6 +12,7 @@ final class CurrencyTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // MARK: setup appearence
+        backgroundColor = UIColor(named: "currencyCellBackground")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
