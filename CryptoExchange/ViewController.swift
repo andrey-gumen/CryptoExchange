@@ -9,6 +9,7 @@ class ViewController: UIViewController {
         
         setupLayout()
         setupAppearence()
+        setupBehaviour()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +39,30 @@ private extension ViewController {
     // MARK: setup appearence
     func setupAppearence() {
         tableView.backgroundColor = .darkGray
+        tableView.rowHeight = 48
+    }
+    
+    // MARK: setup behaviour
+    func setupBehaviour() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.register(CurrencyTableViewCell.nib, forCellReuseIdentifier: CurrencyTableViewCell.cellIdentifier)
+    }
+    
+}
+
+// MARK: implementation UITableViewDelegate / UITableViewDataSource
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        6
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
     
 }

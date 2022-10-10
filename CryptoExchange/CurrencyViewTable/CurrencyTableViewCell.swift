@@ -1,6 +1,9 @@
 import UIKit
 
 final class CurrencyTableViewCell: UITableViewCell {
+    
+    static let cellIdentifier = "CurrencyTableViewCell"
+    static let nib = UINib(nibName: "CurrencyTableViewCell", bundle: nil)
 
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
