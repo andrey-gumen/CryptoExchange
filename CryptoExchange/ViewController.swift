@@ -100,13 +100,3 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
-
-// MARK: array sugar
-
-extension Collection {
-
-    subscript(safe index: Index) -> Iterator.Element? {
-        guard indices.contains(index) else { return nil }
-        return self[index]
-    }
-}
