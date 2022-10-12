@@ -5,7 +5,7 @@ final class CurrencyDetailsViewController: UIViewController {
     private let titleLabel = UILabel()
     private let priceLabel = UILabel()
     
-    var currencyId: String = ""
+    var currencyId: String
     
     init(currencyId: String) {
         self.currencyId = currencyId
