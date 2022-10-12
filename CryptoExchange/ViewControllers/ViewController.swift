@@ -114,13 +114,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         ) as! CurrencyTableViewCell
         
         let data = currencies[safe: indexPath.row]
+        let id = data?.id ?? ""
+        let name = data?.name ?? "Invalid data"
+        
         cell.updateData(
-            name: data?.name ?? "Invalid data",
+            name: name,
             price: data?.priceInUsd
         )
         cell.cellDidTappedHandler = {
-            let name = data?.name ?? "Invalid data"
-            print("tapped: \(name)")
+            //print("tapped: \(name)")
+            let detailsController = CurrencyDetailsViewController(currencyId: id)
+            self.present(detailsController, animated: true)
         }
         
         return cell
