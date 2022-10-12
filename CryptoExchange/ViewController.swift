@@ -118,6 +118,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             name: data?.name ?? "Invalid data",
             price: data?.priceInUsd
         )
+        cell.cellDidTappedHandler = {
+            let name = data?.name ?? "Invalid data"
+            print("tapped: \(name)")
+        }
+        
         return cell
     }
 }
