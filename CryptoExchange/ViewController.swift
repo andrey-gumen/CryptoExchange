@@ -6,7 +6,8 @@ final class ViewController: UIViewController {
 
     private let tableViewTitleLabel = UILabel()
     private let tableView = UITableView()
-
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,11 +37,18 @@ private extension ViewController {
     func setupLayout() {
         view.addSubview(tableViewTitleLabel)
         view.addSubview(tableView)
-
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        activityIndicator.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
+        
         tableViewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         tableViewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
         tableViewTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        tableViewTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 12).isActive = true
+        tableViewTitleLabel.trailingAnchor.constraint(equalTo: activityIndicator.leadingAnchor, constant: -12).isActive = true
         tableViewTitleLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,9 +62,11 @@ private extension ViewController {
     func setupAppearence() {
         tableViewTitleLabel.text = "Exchange Rates"
         tableViewTitleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-
+        
         tableView.backgroundColor = UIColor(named: "currencyTableViewBackgrounds")
         tableView.rowHeight = 48
+        
+        activityIndicator.isHidden = true
     }
 
     // MARK: setup behaviour
