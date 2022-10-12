@@ -8,6 +8,17 @@ final class ViewController: UIViewController {
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
+    var IsRequestInProgress: Bool = false {
+        didSet {
+            activityIndicator.isHidden = !IsRequestInProgress
+            if IsRequestInProgress {
+                activityIndicator.startAnimating()
+            } else {
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +34,17 @@ final class ViewController: UIViewController {
     }
 
     private func requestAllCurrencies() {
-        APIManager.shared.getAssets { [weak self] models in
-            // print(models)
+        IsRequestInProgress = true
+        APIManager.shared.getAssets { [weak self] error, models in
+            self?.IsRequestInProgress = false
+            
+            // in case of error array will be empty
             self?.currencies = models
             self?.tableView.reloadData()
+            
+            if let error = error {
+                print(error)
+            }
         }
     }
 }

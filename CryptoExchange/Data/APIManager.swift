@@ -23,20 +23,20 @@ final class APIManager {
     }
 
     // MARK: requests
-    func getAssets(completion: @escaping (([CryptoCurrencyModel]) -> Void)) {
+    func getAssets(completion: @escaping ((Error?, [CryptoCurrencyModel]) -> Void)) {
         AF.request(
             Constants.BaseUrl.rawValue + EndPoints.Assets.rawValue,
             method: .get,
             headers: authorizationHeader
         ).responseDecodable(of: [CryptoCurrencyModel].self) { data in
             switch data.result {
-            case .failure(let error): print(error)
-            case .success(let models): completion(models)
+            case .failure(let error): completion(error, [])
+            case .success(let models): completion(nil, models)
             }
         }
     }
        
-    func getCurrencyDetails(ids: String,  completion: @escaping (([CryptoCurrencyModel]) -> Void)) {
+    func getCurrencyDetails(ids: String,  completion: @escaping ((Error?, [CryptoCurrencyModel]) -> Void)) {
         let parameters: Parameters = ["filter_asset_id": ids]
         
         AF.request(
@@ -46,8 +46,8 @@ final class APIManager {
             headers: authorizationHeader
         ).responseDecodable(of: [CryptoCurrencyModel].self) { data in
             switch data.result {
-            case .failure(let error): print(error)
-            case .success(let models): completion(models)
+            case .failure(let error): completion(error, [])
+            case .success(let models): completion(nil, models)
             }
         }
     }
