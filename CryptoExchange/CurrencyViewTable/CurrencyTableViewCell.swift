@@ -33,7 +33,7 @@ final class CurrencyTableViewCell: UITableViewCell {
         addGestureRecognizer(tapGesture)
     }
     
-    @objc func handleTap(sender: UITapGestureRecognizer) {
+    @objc private func handleTap(sender: UITapGestureRecognizer) {
         cellDidTappedHandler?()
     }
     
