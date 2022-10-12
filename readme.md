@@ -26,3 +26,5 @@ dependencies: [
     .package(url: "https://github.com/Alamofire/Alamofire.git", .upToNextMajor(from: "5.6.1"))
 ]
 ```
+
+![Screenshot 2022-10-13 at 01 29 21](https://user-images.githubusercontent.com/103877959/195466186-56e6d0c1-82e6-4f83-b8b7-95ce8ee6edc4.png)
