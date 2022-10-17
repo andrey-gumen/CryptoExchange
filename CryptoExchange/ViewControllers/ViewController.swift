@@ -6,7 +6,19 @@ final class ViewController: UIViewController {
 
     private let tableViewTitleLabel = UILabel()
     private let tableView = UITableView()
-
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
+    
+    var IsRequestInProgress: Bool = false {
+        didSet {
+            activityIndicator.isHidden = !IsRequestInProgress
+            if IsRequestInProgress {
+                activityIndicator.startAnimating()
+            } else {
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,10 +34,17 @@ final class ViewController: UIViewController {
     }
 
     private func requestAllCurrencies() {
-        APIManager.shared.getAssets { [weak self] models in
-            // print(models)
+        IsRequestInProgress = true
+        APIManager.shared.getAssets { [weak self] error, models in
+            self?.IsRequestInProgress = false
+            
+            // in case of error array will be empty
             self?.currencies = models
             self?.tableView.reloadData()
+            
+            if let error = error {
+                print(error)
+            }
         }
     }
 }
@@ -36,11 +55,18 @@ private extension ViewController {
     func setupLayout() {
         view.addSubview(tableViewTitleLabel)
         view.addSubview(tableView)
-
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
+        activityIndicator.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        activityIndicator.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
+        
         tableViewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         tableViewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
         tableViewTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        tableViewTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 12).isActive = true
+        tableViewTitleLabel.trailingAnchor.constraint(equalTo: activityIndicator.leadingAnchor, constant: -12).isActive = true
         tableViewTitleLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -54,9 +80,11 @@ private extension ViewController {
     func setupAppearence() {
         tableViewTitleLabel.text = "Exchange Rates"
         tableViewTitleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
-
+        
         tableView.backgroundColor = UIColor(named: "currencyTableViewBackgrounds")
         tableView.rowHeight = 48
+        
+        activityIndicator.isHidden = true
     }
 
     // MARK: setup behaviour
@@ -86,10 +114,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         ) as! CurrencyTableViewCell
         
         let data = currencies[safe: indexPath.row]
+        let id = data?.id ?? ""
+        let name = data?.name ?? "Invalid data"
+        
         cell.updateData(
-            name: data?.name ?? "Invalid data",
+            name: name,
             price: data?.priceInUsd
         )
+        cell.cellDidTappedHandler = {
+            //print("tapped: \(name)")
+            let detailsController = CurrencyDetailsViewController(currencyId: id)
+            self.present(detailsController, animated: true)
+        }
+        
         return cell
     }
 }

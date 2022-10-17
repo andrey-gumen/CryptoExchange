@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A103D3AC28F76952006087FC /* CurrencyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */; };
 		A13B165828F42C59009CB6A4 /* CurrencyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13B165628F42C59009CB6A4 /* CurrencyTableViewCell.swift */; };
 		A13B165928F42C59009CB6A4 /* CurrencyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A13B165728F42C59009CB6A4 /* CurrencyTableViewCell.xib */; };
 		A194404228F4A6B700778190 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A194404128F4A6B700778190 /* CollectionExtension.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewController.swift; sourceTree = "<group>"; };
 		A13B165628F42C59009CB6A4 /* CurrencyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyTableViewCell.swift; sourceTree = "<group>"; };
 		A13B165728F42C59009CB6A4 /* CurrencyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyTableViewCell.xib; sourceTree = "<group>"; };
 		A194404128F4A6B700778190 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
@@ -49,6 +51,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A103D3AA28F768F2006087FC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1EF7CA428F34D66007B0FEC /* ViewController.swift */,
+				A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		A13B165428F424EA009CB6A4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,11 +97,11 @@
 		A1EF7C9F28F34D66007B0FEC /* CryptoExchange */ = {
 			isa = PBXGroup;
 			children = (
+				A103D3AA28F768F2006087FC /* ViewControllers */,
 				A13B165528F42554009CB6A4 /* CurrencyViewTable */,
 				A13B165428F424EA009CB6A4 /* Data */,
 				A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */,
 				A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */,
-				A1EF7CA428F34D66007B0FEC /* ViewController.swift */,
 				A194404128F4A6B700778190 /* CollectionExtension.swift */,
 				A1EF7CA628F34D66007B0FEC /* Main.storyboard */,
 				A1EF7CA928F34D66007B0FEC /* Assets.xcassets */,
@@ -184,6 +195,7 @@
 				A1EF7CBA28F36B3E007B0FEC /* CryptoCurrencyModel.swift in Sources */,
 				A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */,
 				A13B165828F42C59009CB6A4 /* CurrencyTableViewCell.swift in Sources */,
+				A103D3AC28F76952006087FC /* CurrencyDetailsViewController.swift in Sources */,
 				A1EF7CA328F34D66007B0FEC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
