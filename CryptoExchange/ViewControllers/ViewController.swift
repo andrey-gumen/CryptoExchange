@@ -30,7 +30,19 @@ final class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if let navigationController = navigationController {
+            navigationController.isNavigationBarHidden = true
+        }
+        
         requestAllCurrencies()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let navigationController = navigationController {
+            navigationController.isNavigationBarHidden = false
+        }
     }
 
     private func requestAllCurrencies() {
@@ -57,34 +69,43 @@ private extension ViewController {
         view.addSubview(tableView)
         view.addSubview(activityIndicator)
         
+        let layoutGuide = view.safeAreaLayoutGuide;
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
+        activityIndicator.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
         activityIndicator.heightAnchor.constraint(equalToConstant: 48).isActive = true
         activityIndicator.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        activityIndicator.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12).isActive = true
+        activityIndicator.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: -12).isActive = true
         
         tableViewTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        tableViewTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 48).isActive = true
-        tableViewTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
+        tableViewTitleLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor).isActive = true
+        tableViewTitleLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
         tableViewTitleLabel.trailingAnchor.constraint(equalTo: activityIndicator.leadingAnchor, constant: -12).isActive = true
         tableViewTitleLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
 
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: tableViewTitleLabel.bottomAnchor, constant: 12).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: layoutGuide.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor).isActive = true
     }
 
     // MARK: setup appearence
     func setupAppearence() {
+        let backgroundScheme = UIColor(named: "viewBackground")
+        
+        view.backgroundColor = backgroundScheme
+        
         tableViewTitleLabel.text = "Exchange Rates"
         tableViewTitleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
         
-        tableView.backgroundColor = UIColor(named: "currencyTableViewBackgrounds")
+        tableView.backgroundColor = backgroundScheme
         tableView.rowHeight = 48
         
         activityIndicator.isHidden = true
+        
+//        if let navigationController = navigationController {
+//            navigationController.isNavigationBarHidden = true
+//        }
     }
 
     // MARK: setup behaviour
@@ -123,8 +144,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         )
         cell.cellDidTappedHandler = {
             //print("tapped: \(name)")
-            let detailsController = CurrencyDetailsViewController(currencyId: id)
-            self.present(detailsController, animated: true)
+            if let navigationController = self.navigationController {
+                let detailsController = CurrencyDetailsViewController(currencyId: id)
+                navigationController.pushViewController(detailsController, animated: true)
+            }
         }
         
         return cell

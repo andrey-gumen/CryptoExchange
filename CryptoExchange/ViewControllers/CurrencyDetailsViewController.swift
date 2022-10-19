@@ -56,22 +56,23 @@ private extension CurrencyDetailsViewController {
         view.addSubview(titleLabel)
         view.addSubview(priceLabel)
         
+        let layoutGuide = view.safeAreaLayoutGuide;
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 12).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 12).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 12).isActive = true
+        priceLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
+        priceLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
     }
 
     // MARK: setup appearence
     func setupAppearence() {
-        view.backgroundColor = UIColor(named: "detailViewBackground")
+        view.backgroundColor = UIColor(named: "viewBackground")
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
         priceLabel.font = UIFont.systemFont(ofSize: 18)
