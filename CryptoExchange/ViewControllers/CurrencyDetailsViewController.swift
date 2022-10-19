@@ -30,7 +30,7 @@ final class CurrencyDetailsViewController: UIViewController {
         requestDetails()
     }
     
-    private func updateView(model: CryptoCurrencyModel?) {
+    private func updateView(model: CurrencyModel?) {
         titleLabel.text = model?.name ?? "Invalid data"
         
         let formattedPrice = model?.priceInUsd != nil ? String(format: "$%.2f", model!.priceInUsd!) : "-"

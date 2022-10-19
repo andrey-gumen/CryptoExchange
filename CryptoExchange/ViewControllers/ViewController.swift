@@ -2,7 +2,7 @@ import UIKit
 
 final class ViewController: UIViewController {
 
-    private var currencies: [CryptoCurrencyModel] = []
+    private var currencies: [CurrencyDescriptor] = []
 
     private let tableViewTitleLabel = UILabel()
     private let tableView = UITableView()
@@ -55,7 +55,7 @@ final class ViewController: UIViewController {
             self?.tableView.reloadData()
             
             if let error = error {
-                print(error)
+                print(error.localizedDescription)
             }
         }
     }

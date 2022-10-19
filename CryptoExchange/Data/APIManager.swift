@@ -19,16 +19,16 @@ final class APIManager {
     }
     
     private var authorizationHeader: HTTPHeaders {
-        ["X-CoinAPI-Key": "0481018D-3570-41A5-8C69-7F5AC9C64342"]
+        ["X-CoinAPI-Key": "BCC8F92D-F5D5-417C-B9F2-921893AFE609"]
     }
 
     // MARK: requests
-    func getAssets(completion: @escaping ((Error?, [CryptoCurrencyModel]) -> Void)) {
+    func getAssets(completion: @escaping ((Error?, [CurrencyDescriptor]) -> Void)) {
         AF.request(
             Constants.BaseUrl.rawValue + EndPoints.Assets.rawValue,
             method: .get,
             headers: authorizationHeader
-        ).responseDecodable(of: [CryptoCurrencyModel].self) { data in
+        ).responseDecodable(of: [CurrencyDescriptor].self) { data in
             switch data.result {
             case .failure(let error): completion(error, [])
             case .success(let models): completion(nil, models)
@@ -36,7 +36,7 @@ final class APIManager {
         }
     }
        
-    func getCurrencyDetails(ids: String,  completion: @escaping ((Error?, [CryptoCurrencyModel]) -> Void)) {
+    func getCurrencyDetails(ids: String,  completion: @escaping ((Error?, [CurrencyModel]) -> Void)) {
         let parameters: Parameters = ["filter_asset_id": ids]
         
         AF.request(
@@ -44,7 +44,7 @@ final class APIManager {
             method: .get,
             parameters: parameters,
             headers: authorizationHeader
-        ).responseDecodable(of: [CryptoCurrencyModel].self) { data in
+        ).responseDecodable(of: [CurrencyModel].self) { data in
             switch data.result {
             case .failure(let error): completion(error, [])
             case .success(let models): completion(nil, models)

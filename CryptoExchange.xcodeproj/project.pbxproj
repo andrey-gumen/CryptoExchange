@@ -19,7 +19,7 @@
 		A1EF7CAD28F34D66007B0FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */; };
 		A1EF7CB628F36A74007B0FEC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1EF7CB528F36A74007B0FEC /* Alamofire */; };
 		A1EF7CB828F36AEB007B0FEC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CB728F36AEB007B0FEC /* APIManager.swift */; };
-		A1EF7CBA28F36B3E007B0FEC /* CryptoCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */; };
+		A1EF7CBA28F36B3E007B0FEC /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CB928F36B3E007B0FEC /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		A1EF7CAC28F34D66007B0FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1EF7CAE28F34D66007B0FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1EF7CB728F36AEB007B0FEC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyModel.swift; sourceTree = "<group>"; };
+		A1EF7CB928F36B3E007B0FEC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				A1EF7CB728F36AEB007B0FEC /* APIManager.swift */,
-				A1EF7CB928F36B3E007B0FEC /* CryptoCurrencyModel.swift */,
+				A1EF7CB928F36B3E007B0FEC /* Models.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 				A1EF7CB828F36AEB007B0FEC /* APIManager.swift in Sources */,
 				A194404228F4A6B700778190 /* CollectionExtension.swift in Sources */,
 				A1EF7CA528F34D66007B0FEC /* ViewController.swift in Sources */,
-				A1EF7CBA28F36B3E007B0FEC /* CryptoCurrencyModel.swift in Sources */,
+				A1EF7CBA28F36B3E007B0FEC /* Models.swift in Sources */,
 				A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */,
 				A13B165828F42C59009CB6A4 /* CurrencyTableViewCell.swift in Sources */,
 				A103D3AC28F76952006087FC /* CurrencyDetailsViewController.swift in Sources */,
