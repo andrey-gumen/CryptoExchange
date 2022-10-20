@@ -19,7 +19,7 @@ extension CurrencyDescriptor: CustomStringConvertible {
 }
 
 // MARK: currency icon
-struct CurremcyIcon: Codable {
+struct CurrencyIcon: Codable {
     let id: String
     let iconUrl: String
     
