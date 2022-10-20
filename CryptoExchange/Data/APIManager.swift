@@ -56,7 +56,7 @@ final class APIManager {
         }
     }
     
-    func getCurrencyIcon(id: String,  completion: @escaping ((Error?, [CurrencyIcon]) -> Void)) {
+    func getCurrencyIcon(completion: @escaping ((Error?, [CurrencyIcon]) -> Void)) {
         AF.request(
             Constants.BaseUrl.rawValue + EndPoints.Icons.rawValue,
             method: .get,
