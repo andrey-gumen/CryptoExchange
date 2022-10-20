@@ -10,7 +10,6 @@ final class ViewController: UIViewController {
     
     var IsRequestInProgress: Bool = false {
         didSet {
-            activityIndicator.isHidden = !IsRequestInProgress
             if IsRequestInProgress {
                 activityIndicator.startAnimating()
             } else {
@@ -101,7 +100,7 @@ private extension ViewController {
         tableView.backgroundColor = backgroundScheme
         tableView.rowHeight = 48
         
-        activityIndicator.isHidden = true
+        activityIndicator.hidesWhenStopped = true
         
 //        if let navigationController = navigationController {
 //            navigationController.isNavigationBarHidden = true
