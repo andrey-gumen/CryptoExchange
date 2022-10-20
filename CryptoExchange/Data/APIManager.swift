@@ -17,7 +17,7 @@ final class APIManager {
     private enum EndPoints : String {
         case Exchanges = "/exchanges"
         case Assets = "/assets"
-        case Icons = "/assets/icons"
+        case Icons = "/assets/icons/small"
     }
     
     private var authorizationHeader: HTTPHeaders {

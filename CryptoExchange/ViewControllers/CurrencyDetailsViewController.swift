@@ -1,9 +1,12 @@
 import UIKit
+import SwiftUI
 
 final class CurrencyDetailsViewController: UIViewController {
 
     // MARK: ui views
     private let titleLabel = UILabel();
+    private let icon = UIImageView()
+    private let typeLabel = UILabel()
     private let priceLabel = UILabel()
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
     
@@ -41,16 +44,23 @@ final class CurrencyDetailsViewController: UIViewController {
 
         //print("request data for: \(currencyId)")
         requestDetails()
+        requestIcon()
     }
     
     private func updateView(model: CurrencyModel?) {
         titleLabel.text = model?.name ?? "Invalid data"
         titleLabel.sizeToFit()
         
-        let formattedPrice = model?.priceInUsd != nil ? String(format: "$%.2f", model!.priceInUsd!) : "-"
+        let currencyTypeInfo = model?.isCryptoCurrency == nil
+            ? "unknown type"
+            : model?.isCryptoCurrency == 1 ? "crypto currency"
+            : "fiat currency"
+        typeLabel.text = String(format: "This is %@", currencyTypeInfo)
+        
+        let formattedPrice = model?.priceInUsd != nil ? String(format: "Price: $%.2f", model!.priceInUsd!) : "-"
         priceLabel.text = formattedPrice
     }
-
+    
     private func requestDetails() {
         IsRequestInProgress = true
         APIManager.shared.getCurrencyDetails(ids: currencyId) { [weak self] error, models in
@@ -64,12 +74,36 @@ final class CurrencyDetailsViewController: UIViewController {
             }
         }
     }
+    
+    private func requestIcon() {
+        //IsRequestInProgress = true
+        APIManager.shared.getCurrencyIcon { [weak self] error, icons in
+            //self?.IsRequestInProgress = false
+            
+            // in case of error array will be empty
+            if let error = error {
+                print(error)
+            }
+            
+            if let icon = icons.first(where: {$0.id == self?.currencyId}) {
+                APIManager.shared.downloadImage(url: icon.iconUrl) { error, image in
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    self?.icon.image = image
+                }
+            }
+        }
+    }
 }
 
 private extension CurrencyDetailsViewController {
 
     // MARK: setup layout
     func setupLayout() {
+        view.addSubview(icon)
+        view.addSubview(typeLabel)
         view.addSubview(priceLabel)
         
         // navigation bar
@@ -81,13 +115,23 @@ private extension CurrencyDetailsViewController {
             
         // content
         let layoutGuide = view.safeAreaLayoutGuide;
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        icon.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
+        icon.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
+        icon.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        icon.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
+        typeLabel.translatesAutoresizingMaskIntoConstraints = false
+        typeLabel.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 12).isActive = true
+        typeLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
+        typeLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
+        typeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
+        priceLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 12).isActive = true
         priceLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
         priceLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
         priceLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
-        
-        
     }
 
     // MARK: setup appearence
