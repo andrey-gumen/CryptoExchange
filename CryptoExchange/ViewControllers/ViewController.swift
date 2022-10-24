@@ -8,7 +8,7 @@ final class ViewController: UIViewController {
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
-    var IsRequestInProgress: Bool = false {
+    private var IsRequestInProgress: Bool = false {
         didSet {
             if IsRequestInProgress {
                 activityIndicator.startAnimating()
