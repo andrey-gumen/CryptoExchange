@@ -5,7 +5,7 @@ final class CurrencyDetailsViewController: UIViewController {
 
     // MARK: ui views
     private let titleLabel = UILabel();
-    private let icon = UIImageView()
+    private let iconImage = UIImageView()
     private let typeLabel = UILabel()
     private let priceLabel = UILabel()
     private let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -13,7 +13,7 @@ final class CurrencyDetailsViewController: UIViewController {
     // MARK: permanent data
     private let currencyId: String
     
-    var IsRequestInProgress: Bool = false {
+    private var IsRequestInProgress: Bool = false {
         didSet {
             if IsRequestInProgress {
                 activityIndicator.startAnimating()
@@ -42,14 +42,14 @@ final class CurrencyDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        //print("request data for: \(currencyId)")
-        requestDetails()
-        requestIcon()
+        sendGroupRequests()
     }
     
-    private func updateView(model: CurrencyModel?) {
+    func updateView(model: CurrencyModel?, icon: UIImage?) {
         titleLabel.text = model?.name ?? "Invalid data"
         titleLabel.sizeToFit()
+        
+        iconImage.image = icon
         
         let currencyTypeInfo = model?.isCryptoCurrency == nil
             ? "unknown type"
@@ -61,48 +61,13 @@ final class CurrencyDetailsViewController: UIViewController {
         priceLabel.text = formattedPrice
     }
     
-    private func requestDetails() {
-        IsRequestInProgress = true
-        APIManager.shared.getCurrencyDetails(ids: currencyId) { [weak self] error, models in
-            self?.IsRequestInProgress = false
-            
-            // in case of error array will be empty
-            self?.updateView(model: models.isEmpty ? nil : models[0])
-            
-            if let error = error {
-                print(error)
-            }
-        }
-    }
-    
-    private func requestIcon() {
-        //IsRequestInProgress = true
-        APIManager.shared.getCurrencyIcon { [weak self] error, icons in
-            //self?.IsRequestInProgress = false
-            
-            // in case of error array will be empty
-            if let error = error {
-                print(error)
-            }
-            
-            if let icon = icons.first(where: {$0.id == self?.currencyId}) {
-                APIManager.shared.downloadImage(url: icon.iconUrl) { error, image in
-                    if let error = error {
-                        print(error)
-                    }
-                    
-                    self?.icon.image = image
-                }
-            }
-        }
-    }
 }
 
 private extension CurrencyDetailsViewController {
-
+    
     // MARK: setup layout
     func setupLayout() {
-        view.addSubview(icon)
+        view.addSubview(iconImage)
         view.addSubview(typeLabel)
         view.addSubview(priceLabel)
         
@@ -115,14 +80,14 @@ private extension CurrencyDetailsViewController {
             
         // content
         let layoutGuide = view.safeAreaLayoutGuide;
-        icon.translatesAutoresizingMaskIntoConstraints = false
-        icon.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
-        icon.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
-        icon.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        icon.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        iconImage.translatesAutoresizingMaskIntoConstraints = false
+        iconImage.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
+        iconImage.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
+        iconImage.widthAnchor.constraint(equalToConstant: 48).isActive = true
+        iconImage.heightAnchor.constraint(equalToConstant: 48).isActive = true
         
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.topAnchor.constraint(equalTo: icon.bottomAnchor, constant: 12).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 12).isActive = true
         typeLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
         typeLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
         typeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
@@ -145,6 +110,66 @@ private extension CurrencyDetailsViewController {
         activityIndicator.hidesWhenStopped = true
     }
     
+    // MARK: reqeasts
+    
+    func sendGroupRequests() {
+        IsRequestInProgress = true
+        var tmpModel: CurrencyModel?
+        var tmpImage: UIImage?
+        
+        let group = DispatchGroup()
+        group.enter()
+        requestDetails(id: currencyId) { model in
+            tmpModel = model
+            group.leave()
+        }
+        
+        group.enter()
+        requestIcon(id: currencyId) { image in
+            group.leave()
+            tmpImage = image
+        }
+        
+        group.notify(queue: DispatchQueue.main) {
+            self.updateView(model: tmpModel, icon: tmpImage)
+            self.IsRequestInProgress = false
+        }
+    }
+      
+    func requestDetails(id: String, completion: @escaping (CurrencyModel?) -> ()) {
+        APIManager.shared.getCurrencyDetails(ids: id) { error, models in
+            // in case of error array will be empty
+            if let error = error {
+                print(error)
+            }
+            
+            let model = models.isEmpty ? nil : models[0]
+            DispatchQueue.main.async {
+                completion(model)
+            }
+        }
+    }
+    
+    func requestIcon(id: String, completion: @escaping (UIImage?) -> ()) {
+        APIManager.shared.getCurrencyIcon { error, icons in
+            // in case of error array will be empty
+            if let error = error {
+                print(error)
+            }
+            
+            var image: UIImage? = nil
+            if let icon = icons.first(where: {$0.id == id}) {
+                APIManager.shared.downloadImage(url: icon.iconUrl) { error, downloadedImage in
+                    if let error = error {
+                        print(error)
+                    }
+                    
+                    image = downloadedImage
+                    completion(image)
+                }
+            }
+        }
+    }
 }
 
 
