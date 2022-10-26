@@ -8,9 +8,9 @@ final class ViewController: UIViewController {
     private let tableView = UITableView()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
-    private var IsRequestInProgress: Bool = false {
+    private var isRequestInProgress: Bool = false {
         didSet {
-            if IsRequestInProgress {
+            if isRequestInProgress {
                 activityIndicator.startAnimating()
             } else {
                 activityIndicator.stopAnimating()
@@ -45,9 +45,9 @@ final class ViewController: UIViewController {
     }
 
     private func requestAllCurrencies() {
-        IsRequestInProgress = true
         APIManager.shared.getAssets { [weak self] error, models in
-            self?.IsRequestInProgress = false
+        isRequestInProgress = true
+            self?.isRequestInProgress = false
             
             // in case of error array will be empty
             self?.currencies = models
