@@ -6,5 +6,4 @@ final class ColorScheme {
     static let currencyCellBackground = UIColor(named: "currencyCellBackground")
     static let currencyTableViewBackground = UIColor(named: "currencyTableViewBackground")
 
-    
 }
