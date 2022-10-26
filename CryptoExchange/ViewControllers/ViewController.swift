@@ -45,16 +45,16 @@ final class ViewController: UIViewController {
     }
 
     private func requestAllCurrencies() {
-        APIManager.shared.getAssets { [weak self] error, models in
         isRequestInProgress = true
+        APIManager.shared.getAssets { [weak self] result in
             self?.isRequestInProgress = false
             
-            // in case of error array will be empty
-            self?.currencies = models
-            self?.tableView.reloadData()
-            
-            if let error = error {
+            switch result {
+            case .failure(let error):
                 print(error.localizedDescription)
+            case .success(let models):
+                self?.currencies = models
+                self?.tableView.reloadData()
             }
         }
     }

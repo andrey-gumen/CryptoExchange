@@ -137,36 +137,45 @@ private extension CurrencyDetailsViewController {
     }
       
     func requestDetails(id: String, completion: @escaping (CurrencyModel?) -> ()) {
-        APIManager.shared.getCurrencyDetails(ids: id) { error, models in
-            // in case of error array will be empty
-            if let error = error {
+        APIManager.shared.getCurrencyDetails(ids: id) { result in
+            var model: CurrencyModel? = nil
+            switch result {
+            case .success(let models):
+                model = models[0]
+            case .failure(let error):
                 print(error)
             }
             
-            let model = models.isEmpty ? nil : models[0]
-            DispatchQueue.main.async {
-                completion(model)
-            }
+            completion(model)
         }
     }
     
     func requestIcon(id: String, completion: @escaping (UIImage?) -> ()) {
-        APIManager.shared.getCurrencyIcon { error, icons in
-            // in case of error array will be empty
-            if let error = error {
+        APIManager.shared.getCurrencyIcon { result in
+            let group = DispatchGroup()
+            var image: UIImage? = nil
+            
+            switch result {
+            case .success(let icons):
+                if let icon = icons.first(where: {$0.id == id}) {
+                    group.enter()
+                    APIManager.shared.downloadImage(url: icon.iconUrl) { result in
+                        switch result {
+                        case .success(let downloadedImage):
+                            image = downloadedImage
+                        case .failure(let error):
+                            print(error)
+                        }
+                        
+                        group.leave()
+                    }
+                }
+            case .failure(let error):
                 print(error)
             }
             
-            var image: UIImage? = nil
-            if let icon = icons.first(where: {$0.id == id}) {
-                APIManager.shared.downloadImage(url: icon.iconUrl) { error, downloadedImage in
-                    if let error = error {
-                        print(error)
-                    }
-                    
-                    image = downloadedImage
-                    completion(image)
-                }
+            group.notify(queue: DispatchQueue.global()) {
+                completion(image)
             }
         }
     }
