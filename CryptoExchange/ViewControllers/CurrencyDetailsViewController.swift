@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 final class CurrencyDetailsViewController: UIViewController {
 
