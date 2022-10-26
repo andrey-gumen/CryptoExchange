@@ -101,10 +101,6 @@ private extension ViewController {
         tableView.rowHeight = 48
         
         activityIndicator.hidesWhenStopped = true
-        
-//        if let navigationController = navigationController {
-//            navigationController.isNavigationBarHidden = true
-//        }
     }
 
     // MARK: setup behaviour
