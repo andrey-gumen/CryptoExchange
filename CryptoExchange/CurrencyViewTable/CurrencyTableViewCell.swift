@@ -40,7 +40,7 @@ final class CurrencyTableViewCell: UITableViewCell {
     // MARK: setup appearence
     
     private func setupAppearence() {
-        backgroundColor = UIColor(named: "currencyCellBackground")
+        backgroundColor = ColorScheme.currencyCellBackground
     }
     
 }

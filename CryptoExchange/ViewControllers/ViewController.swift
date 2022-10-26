@@ -90,7 +90,7 @@ private extension ViewController {
 
     // MARK: setup appearence
     func setupAppearence() {
-        let backgroundScheme = UIColor(named: "viewBackground")
+        let backgroundScheme = ColorScheme.currencyTableViewBackground
         
         view.backgroundColor = backgroundScheme
         

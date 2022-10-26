@@ -101,7 +101,7 @@ private extension CurrencyDetailsViewController {
 
     // MARK: setup appearence
     func setupAppearence() {
-        view.backgroundColor = UIColor(named: "viewBackground")
+        view.backgroundColor = ColorScheme.viewBackground
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 25.0)
         titleLabel.textAlignment = .center
