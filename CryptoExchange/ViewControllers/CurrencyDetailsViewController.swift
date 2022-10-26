@@ -13,9 +13,9 @@ final class CurrencyDetailsViewController: UIViewController {
     // MARK: permanent data
     private let currencyId: String
     
-    private var IsRequestInProgress: Bool = false {
+    private var isRequestInProgress: Bool = false {
         didSet {
-            if IsRequestInProgress {
+            if isRequestInProgress {
                 activityIndicator.startAnimating()
             } else {
                 activityIndicator.stopAnimating()
@@ -113,7 +113,8 @@ private extension CurrencyDetailsViewController {
     // MARK: reqeasts
     
     func sendGroupRequests() {
-        IsRequestInProgress = true
+        isRequestInProgress = true
+        
         var tmpModel: CurrencyModel?
         var tmpImage: UIImage?
         
@@ -132,7 +133,7 @@ private extension CurrencyDetailsViewController {
         
         group.notify(queue: DispatchQueue.main) {
             self.updateView(model: tmpModel, icon: tmpImage)
-            self.IsRequestInProgress = false
+            self.isRequestInProgress = false
         }
     }
       
