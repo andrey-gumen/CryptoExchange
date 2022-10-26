@@ -29,7 +29,7 @@ struct CurrencyIcon: Codable {
     }
 }
 
-// MARk: detailed currency model
+// MARK: detailed currency model
 struct CurrencyModel: Codable {
     let id: String
     let name: String
