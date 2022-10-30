@@ -61,7 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */,
-				A1E8910F2909C59600DCF766 /* ColorScheme.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -134,6 +133,7 @@
 				A13B165528F42554009CB6A4 /* CurrencyViewTable */,
 				A13B165428F424EA009CB6A4 /* Data */,
 				A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */,
+				A1E8910F2909C59600DCF766 /* ColorScheme.swift */,
 				A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */,
 				A194404128F4A6B700778190 /* CollectionExtension.swift */,
 				A1EF7CA928F34D66007B0FEC /* Assets.xcassets */,
