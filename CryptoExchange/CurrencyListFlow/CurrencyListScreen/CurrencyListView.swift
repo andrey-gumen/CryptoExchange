@@ -78,6 +78,7 @@ final class DefaultCurrencyListView: UIViewController {
             .below(of: tableViewTitleLabel)
             .leading(to: view)
             .trailing(to: view)
+            .bottom(to: view)
     }
 
     func setupAppearence() {
