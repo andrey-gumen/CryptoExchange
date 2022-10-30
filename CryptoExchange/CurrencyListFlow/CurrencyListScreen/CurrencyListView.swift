@@ -45,7 +45,7 @@ final class DefaultCurrencyListView: UIViewController {
             navigationController.isNavigationBarHidden = true
         }
         
-        presenter?.requestCurrencues()
+        presenter?.requestCurrencies()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

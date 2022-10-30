@@ -1,7 +1,7 @@
 protocol CurrencyListPresenter {
     var currencies: [CurrencyDescriptor] { get }
     func currencyCellDidTapped(id: String)
-    func requestCurrencues()
+    func requestCurrencies()
 }
 
 final class DefaultCurrencyListPresenter: CurrencyListPresenter {
@@ -20,7 +20,7 @@ final class DefaultCurrencyListPresenter: CurrencyListPresenter {
         router.moveToDetailsScreen(for: id)
     }
     
-    func requestCurrencues() {
+    func requestCurrencies() {
         view.setActivityIndicator(activated: true)
         
         APIManager.shared.getAssets { [weak self] result in
