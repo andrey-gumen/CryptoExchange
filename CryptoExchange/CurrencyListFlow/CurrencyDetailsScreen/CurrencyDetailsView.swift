@@ -1,4 +1,5 @@
 import UIKit
+import EasyAutolayout
 
 protocol CurrencyDetailsView: AnyObject {
     func setActivityIndicator(activated: Bool)
@@ -75,24 +76,22 @@ private extension DefaultCurrencyDetailsView {
         navigationItem.setRightBarButton(barButton, animated: false)
             
         // content
-        let layoutGuide = view.safeAreaLayoutGuide;
-        iconImage.translatesAutoresizingMaskIntoConstraints = false
-        iconImage.topAnchor.constraint(equalTo: layoutGuide.topAnchor, constant: 12).isActive = true
-        iconImage.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
-        iconImage.widthAnchor.constraint(equalToConstant: 48).isActive = true
-        iconImage.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        iconImage.pin
+            .top(to: view.safeAreaLayoutGuide, offset: 12)
+            .leading(to: view, offset: 12)
+            .size(to: CGSize(width: 48, height: 48))
         
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.topAnchor.constraint(equalTo: iconImage.bottomAnchor, constant: 12).isActive = true
-        typeLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
-        typeLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
-        typeLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        typeLabel.pin
+            .below(of: iconImage, offset: 12)
+            .leading(to: view, offset: 12)
+            .trailing(to: view, offset: 12)
+            .height(to: 24)
         
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        priceLabel.topAnchor.constraint(equalTo: typeLabel.bottomAnchor, constant: 12).isActive = true
-        priceLabel.leadingAnchor.constraint(equalTo: layoutGuide.leadingAnchor, constant: 12).isActive = true
-        priceLabel.trailingAnchor.constraint(equalTo: layoutGuide.trailingAnchor, constant: 12).isActive = true
-        priceLabel.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        priceLabel.pin
+            .below(of: typeLabel, offset: 12)
+            .leading(to: view, offset: 12)
+            .trailing(to: view, offset: 12)
+            .height(to: 24)
     }
 
     // MARK: setup appearence
