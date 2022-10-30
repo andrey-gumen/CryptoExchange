@@ -18,8 +18,6 @@
 		A1E891102909C59600DCF766 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8910F2909C59600DCF766 /* ColorScheme.swift */; };
 		A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */; };
 		A1EF7CA328F34D66007B0FEC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */; };
-		A1EF7CA528F34D66007B0FEC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CA428F34D66007B0FEC /* ViewController.swift */; };
-		A1EF7CA828F34D66007B0FEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CA628F34D66007B0FEC /* Main.storyboard */; };
 		A1EF7CAA28F34D66007B0FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CA928F34D66007B0FEC /* Assets.xcassets */; };
 		A1EF7CAD28F34D66007B0FEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */; };
 		A1EF7CB628F36A74007B0FEC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A1EF7CB528F36A74007B0FEC /* Alamofire */; };
@@ -39,8 +37,6 @@
 		A1EF7C9D28F34D66007B0FEC /* CryptoExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A1EF7CA428F34D66007B0FEC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A1EF7CA728F34D66007B0FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A1EF7CA928F34D66007B0FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1EF7CAC28F34D66007B0FEC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1EF7CAE28F34D66007B0FEC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +60,6 @@
 		A103D3AA28F768F2006087FC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1EF7CA428F34D66007B0FEC /* ViewController.swift */,
 				A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */,
 				A1E8910F2909C59600DCF766 /* ColorScheme.swift */,
 			);
@@ -141,7 +136,6 @@
 				A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */,
 				A1EF7CA228F34D66007B0FEC /* SceneDelegate.swift */,
 				A194404128F4A6B700778190 /* CollectionExtension.swift */,
-				A1EF7CA628F34D66007B0FEC /* Main.storyboard */,
 				A1EF7CA928F34D66007B0FEC /* Assets.xcassets */,
 				A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */,
 				A1EF7CAE28F34D66007B0FEC /* Info.plist */,
@@ -218,7 +212,6 @@
 				A13B165928F42C59009CB6A4 /* CurrencyTableViewCell.xib in Resources */,
 				A1EF7CAD28F34D66007B0FEC /* LaunchScreen.storyboard in Resources */,
 				A1EF7CAA28F34D66007B0FEC /* Assets.xcassets in Resources */,
-				A1EF7CA828F34D66007B0FEC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +226,6 @@
 				A1E891102909C59600DCF766 /* ColorScheme.swift in Sources */,
 				A194404228F4A6B700778190 /* CollectionExtension.swift in Sources */,
 				A160E090290EE9DB004BB5E4 /* CurrencyListPresenter.swift in Sources */,
-				A1EF7CA528F34D66007B0FEC /* ViewController.swift in Sources */,
 				A1EF7CBA28F36B3E007B0FEC /* Models.swift in Sources */,
 				A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */,
 				A13B165828F42C59009CB6A4 /* CurrencyTableViewCell.swift in Sources */,
@@ -247,14 +239,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A1EF7CA628F34D66007B0FEC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A1EF7CA728F34D66007B0FEC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A1EF7CAB28F34D66007B0FEC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -392,7 +376,6 @@
 				INFOPLIST_FILE = CryptoExchange/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -420,7 +403,6 @@
 				INFOPLIST_FILE = CryptoExchange/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
