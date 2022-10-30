@@ -1,4 +1,8 @@
+import UIKit
+
 protocol CurrencyDetailsPresenter {
-    var currencyId: String { get }
+    var currencyModel: CurrencyModel? { get }
+    var currencyIcon: UIImage? { get }
+    
     func requestCurrencyDetails()
 }
