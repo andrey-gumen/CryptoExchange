@@ -65,14 +65,14 @@ final class DefaultCurrencyListView: UIViewController {
         
         activityIndicator.pin
             .top(to: view.safeAreaLayoutGuide)
-            .trailing(to: view, offset: -12)
+            .trailing(to: view, offset: 12)
             .size(to: CGSize(width: 48, height: 48))
         
         tableViewTitleLabel.pin
             .top(to: view.safeAreaLayoutGuide)
             .height(to: 48)
             .leading(to: view, offset: 12)
-            .trailing(to: view, offset: -12)
+            .trailing(to: view, offset: 12)
         
         tableView.pin
             .below(of: tableViewTitleLabel)
