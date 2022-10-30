@@ -57,14 +57,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A103D3AA28F768F2006087FC /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		A13B165428F424EA009CB6A4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +97,7 @@
 		A160E096290EEBC1004BB5E4 /* CurrencyDetailsScreen */ = {
 			isa = PBXGroup;
 			children = (
+				A103D3AB28F76952006087FC /* CurrencyDetailsViewController.swift */,
 			);
 			path = CurrencyDetailsScreen;
 			sourceTree = "<group>";
@@ -129,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				A160E08E290EE983004BB5E4 /* CurrencyListFlow */,
-				A103D3AA28F768F2006087FC /* ViewControllers */,
 				A13B165528F42554009CB6A4 /* CurrencyViewTable */,
 				A13B165428F424EA009CB6A4 /* Data */,
 				A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */,
