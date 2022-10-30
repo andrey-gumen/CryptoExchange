@@ -13,6 +13,7 @@
 		A160E090290EE9DB004BB5E4 /* CurrencyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A160E08F290EE9DB004BB5E4 /* CurrencyListPresenter.swift */; };
 		A160E092290EE9ED004BB5E4 /* CurrencyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A160E091290EE9ED004BB5E4 /* CurrencyListView.swift */; };
 		A160E094290EE9FF004BB5E4 /* CurrencyListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A160E093290EE9FF004BB5E4 /* CurrencyListRouter.swift */; };
+		A160E099290EEE02004BB5E4 /* EasyAutolayout in Frameworks */ = {isa = PBXBuildFile; productRef = A160E098290EEE02004BB5E4 /* EasyAutolayout */; };
 		A194404228F4A6B700778190 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A194404128F4A6B700778190 /* CollectionExtension.swift */; };
 		A1E891102909C59600DCF766 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E8910F2909C59600DCF766 /* ColorScheme.swift */; };
 		A1EF7CA128F34D66007B0FEC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF7CA028F34D66007B0FEC /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1EF7CB628F36A74007B0FEC /* Alamofire in Frameworks */,
+				A160E099290EEE02004BB5E4 /* EasyAutolayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,6 +167,7 @@
 			name = CryptoExchange;
 			packageProductDependencies = (
 				A1EF7CB528F36A74007B0FEC /* Alamofire */,
+				A160E098290EEE02004BB5E4 /* EasyAutolayout */,
 			);
 			productName = CryptoExchange;
 			productReference = A1EF7C9D28F34D66007B0FEC /* CryptoExchange.app */;
@@ -196,6 +199,7 @@
 			mainGroup = A1EF7C9428F34D66007B0FEC;
 			packageReferences = (
 				A1EF7CB428F36A74007B0FEC /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A160E097290EEE02004BB5E4 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */,
 			);
 			productRefGroup = A1EF7C9E28F34D66007B0FEC /* Products */;
 			projectDirPath = "";
@@ -456,6 +460,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A160E097290EEE02004BB5E4 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Ligr/EasyAutoLayout";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		A1EF7CB428F36A74007B0FEC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -467,6 +479,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A160E098290EEE02004BB5E4 /* EasyAutolayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A160E097290EEE02004BB5E4 /* XCRemoteSwiftPackageReference "EasyAutoLayout" */;
+			productName = EasyAutolayout;
+		};
 		A1EF7CB528F36A74007B0FEC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A1EF7CB428F36A74007B0FEC /* XCRemoteSwiftPackageReference "Alamofire" */;
