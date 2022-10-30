@@ -19,7 +19,6 @@ final class CurrencyListRouter: CurrencyListRouterInput {
     }
     
     func moveToDetailsScreen(for id: String) {
-        let detailsController = DefaultCurrencyDetailsView(currencyId: id)
-        navigationController.pushViewController(detailsController, animated: true)
+        let _ = CurrencyDetailsRouter(navigationController: navigationController, currencyId: id)
     }
 }
