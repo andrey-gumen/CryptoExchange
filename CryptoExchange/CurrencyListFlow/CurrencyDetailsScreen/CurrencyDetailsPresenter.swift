@@ -38,7 +38,7 @@ final class DefaultCurrencyDetailsPresenter: CurrencyDetailsPresenter {
         
         group.notify(queue: DispatchQueue.main) {
             self.view.updateView()
-            self.view.setActivityIndicator(activated: true)
+            self.view.setActivityIndicator(activated: false)
         }
     }
     
