@@ -6,7 +6,7 @@ protocol CurrencyListRouterInput {
 
 final class CurrencyListRouter: CurrencyListRouterInput {
     
-    let navigationController: UINavigationController!
+    private let navigationController: UINavigationController!
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
