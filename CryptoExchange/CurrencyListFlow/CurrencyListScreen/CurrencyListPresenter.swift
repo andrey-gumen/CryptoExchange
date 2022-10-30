@@ -17,10 +17,23 @@ final class DefaultCurrencyListPresenter: CurrencyListPresenter {
     }
     
     func currencyCellDidTapped(id: String) {
-        print(#function)
+        router.moveToDetailsScreen(for: id)
     }
     
     func requestCurrencues() {
-        print(#function)
+        view.setActivityIndicator(activated: true)
+        
+        APIManager.shared.getAssets { [weak self] result in
+            self?.view.setActivityIndicator(activated: false)
+            
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let models):
+                self?.currencies = models
+                self?.view.reloadData()
+            }
+        }
     }
+    
 }

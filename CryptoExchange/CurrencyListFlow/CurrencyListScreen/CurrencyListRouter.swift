@@ -1,7 +1,7 @@
 import UIKit
 
 protocol CurrencyListRouterInput {
-    func moveToDetailsScreen()
+    func moveToDetailsScreen(for id: String)
 }
 
 final class CurrencyListRouter: CurrencyListRouterInput {
@@ -17,7 +17,10 @@ final class CurrencyListRouter: CurrencyListRouterInput {
         navigationController.pushViewController(view, animated: true)
     }
     
-    func moveToDetailsScreen() {
-        print(#function)
+    func moveToDetailsScreen(for id: String) {
+        if let navigationController = self.navigationController {
+           let detailsController = CurrencyDetailsViewController(currencyId: id)
+           navigationController.pushViewController(detailsController, animated: true)
+        }
     }
 }
