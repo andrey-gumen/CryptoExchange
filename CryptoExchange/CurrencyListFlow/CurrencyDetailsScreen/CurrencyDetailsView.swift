@@ -1,5 +1,10 @@
 import UIKit
 
+protocol CurrencyDetailsView: AnyObject {
+    func setActivityIndicator(activated: Bool)
+    func updateView()
+}
+
 final class CurrencyDetailsViewController: UIViewController {
 
     // MARK: ui views
