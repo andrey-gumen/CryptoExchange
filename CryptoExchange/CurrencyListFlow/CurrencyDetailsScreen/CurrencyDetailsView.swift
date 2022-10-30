@@ -5,7 +5,7 @@ protocol CurrencyDetailsView: AnyObject {
     func updateView()
 }
 
-final class CurrencyDetailsViewController: UIViewController {
+final class DefaultCurrencyDetailsView: UIViewController {
 
     // MARK: ui views
     private let titleLabel = UILabel();
@@ -67,7 +67,7 @@ final class CurrencyDetailsViewController: UIViewController {
     
 }
 
-private extension CurrencyDetailsViewController {
+private extension DefaultCurrencyDetailsView {
     
     // MARK: setup layout
     func setupLayout() {
