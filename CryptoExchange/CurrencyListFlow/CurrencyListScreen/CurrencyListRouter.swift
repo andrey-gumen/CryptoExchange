@@ -6,7 +6,8 @@ protocol CurrencyListRouterInput {
 
 final class CurrencyListRouter: CurrencyListRouterInput {
     
-    let navigationController: UINavigationController?
+    let navigationController: UINavigationController!
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         
@@ -18,9 +19,7 @@ final class CurrencyListRouter: CurrencyListRouterInput {
     }
     
     func moveToDetailsScreen(for id: String) {
-        if let navigationController = self.navigationController {
-           let detailsController = CurrencyDetailsViewController(currencyId: id)
-           navigationController.pushViewController(detailsController, animated: true)
-        }
+        let detailsController = CurrencyDetailsViewController(currencyId: id)
+        navigationController.pushViewController(detailsController, animated: true)
     }
 }
