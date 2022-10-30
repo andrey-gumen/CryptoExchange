@@ -1,0 +1,3 @@
+protocol CurrencyListRouterInput {
+    func moveToDetailsScreen()
+}

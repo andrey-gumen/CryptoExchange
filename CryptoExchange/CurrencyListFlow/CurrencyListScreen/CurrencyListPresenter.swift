@@ -1,0 +1,3 @@
+protocol CurrencyListPresenter {
+    func requestCurrencyList()
+}
