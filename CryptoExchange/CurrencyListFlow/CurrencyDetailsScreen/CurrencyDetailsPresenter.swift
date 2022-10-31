@@ -51,7 +51,7 @@ final class DefaultCurrencyDetailsPresenter: CurrencyDetailsPresenter {
             case .success(let models):
                 model = models[0]
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
             
             completion(model)
@@ -72,14 +72,14 @@ final class DefaultCurrencyDetailsPresenter: CurrencyDetailsPresenter {
                         case .success(let downloadedImage):
                             image = downloadedImage
                         case .failure(let error):
-                            print(error)
+                            print(error.localizedDescription)
                         }
                         
                         group.leave()
                     }
                 }
             case .failure(let error):
-                print(error)
+                print(error.localizedDescription)
             }
             
             group.notify(queue: DispatchQueue.global()) {
