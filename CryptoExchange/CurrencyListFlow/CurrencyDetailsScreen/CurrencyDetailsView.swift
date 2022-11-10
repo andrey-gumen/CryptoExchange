@@ -11,7 +11,7 @@ final class DefaultCurrencyDetailsView: UIViewController {
     var presenter: CurrencyDetailsPresenter?
 
     // MARK: ui views
-    private let titleLabel = UILabel();
+    private let titleLabel = UILabel()
     private let iconImage = UIImageView()
     private let typeLabel = UILabel()
     private let priceLabel = UILabel()
